@@ -1,6 +1,6 @@
 # CURSOR_HW_RISIC
 
-<h1> 1 Variables homework <h1>
+ 1 Variables homework
 
 GitPages:
 
