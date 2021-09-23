@@ -8,7 +8,7 @@ const minPrice = Math.min(pensilPrice, cakePrice, potPrise);
 
 const sumProduct = pensilPrice + cakePrice + potPrise;
 
-const truncSum = Math.floor(Math.trunc(pensilPrice) + Math.trunc(cakePrice) + Math.trunc(potPrise));
+const truncSum = Math.floor(sumProduct);
 
 const roundSum = 100 * Math.round(truncSum / 100);
 
@@ -16,7 +16,7 @@ const oddEven = roundSum % 2 === 0;
 
 const change = 500 - sumProduct;
 
-const averageSum = Math.round( ( (pensilPrice + cakePrice + potPrise) / 3 ) * 100 ) / 100;
+const averageSum = Math.round( ( (sumProduct) / 3 ) * 100 ) / 100;
 
 const sale = Math.random();
 
