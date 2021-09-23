@@ -8,7 +8,7 @@ const minPrice = Math.min(pensilPrice, cakePrice, potPrise);
 
 const sumProduct = pensilPrice + cakePrice + potPrise;
 
-const truncSum = Math.floor(sumProduct);
+const truncSum = Math.floor(pensilPrice) + Math.floor(cakePrice) + Math.floor(potPrise);
 
 const roundSum = 100 * Math.round(truncSum / 100);
 
