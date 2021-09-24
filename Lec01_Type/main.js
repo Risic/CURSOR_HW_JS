@@ -12,19 +12,21 @@ const truncSum = Math.floor(pensilPrice) + Math.floor(cakePrice) + Math.floor(po
 
 const roundSum = 100 * Math.round(truncSum / 100);
 
-const oddEven = roundSum % 2 === 0;
+const isOddOrEven = roundSum % 2 === 0;
 
-const change = 500 - sumProduct;
+const userMoney = 500;
+
+const change = userMoney - sumProduct;
 
 const averageSum = Math.round( ( (sumProduct) / 3 ) * 100 ) / 100;
 
-const sale = Math.random();
+const discount = Math.random();
 
-const salePersent = Math.round(sale * 100);
+const salePersent = Math.round(discount * 100);
 
-const saleInMoney = Math.round( (sumProduct * sale) * 100 ) / 100;
+const saleInMoney = Math.round( (sumProduct * discount) * 100 ) / 100;
 
-const sumToPay = Math.round( (sumProduct - sumProduct * sale) * 100) / 100;
+const sumToPay = Math.round( (sumProduct - sumProduct * discount) * 100) / 100;
 
 const selfPrice = Math.round( (sumProduct / 2) * 100) / 100;
 
@@ -37,7 +39,7 @@ document.writeln(
     Общая стоимость: ${sumProduct} <br>
     Суммарная цена: ${truncSum} <br>
     Суммарная цена (округленная): ${roundSum} <br>
-    Четность: ${oddEven} <br>
+    Четность: ${isOddOrEven} <br>
     Остача: ${change} <br>
     Среднее значение: ${averageSum} <br>
     Скидка: ${salePersent}% <br> 
