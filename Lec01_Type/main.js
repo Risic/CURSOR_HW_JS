@@ -18,19 +18,19 @@ const userMoney = 500;
 
 const change = userMoney - sumProduct;
 
-const averageSum = Math.round( ( (sumProduct) / 3 ) * 100 ) / 100;
+const averageSum = Math.round(((sumProduct) / 3) * 100) / 100;
 
 const discount = Math.random();
 
 const salePersent = Math.round(discount * 100);
 
-const saleInMoney = Math.round( (sumProduct * discount) * 100 ) / 100;
+const saleInMoney = Math.round((sumProduct * discount) * 100) / 100;
 
-const sumToPay = Math.round( (sumProduct - sumProduct * discount) * 100) / 100;
+const sumToPay = Math.round((sumProduct - sumProduct * discount) * 100) / 100;
 
-const selfPrice = Math.round( (sumProduct / 2) * 100) / 100;
+const selfPrice = Math.round((sumProduct / 2) * 100) / 100;
 
-const profit = Math.round( (selfPrice - saleInMoney) * 100) / 100;
+const profit = Math.round((selfPrice - saleInMoney) * 100) / 100;
 
 document.writeln(
     `
