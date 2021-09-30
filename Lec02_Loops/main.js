@@ -1,8 +1,8 @@
-let N,
-    M,
-    skipEven,
-    outputSkipEven = "",
-    sum = 0;
+let N;
+let M;
+let sum = 0
+let outputSkipEven;
+let skipEven;
 
 do {
 
@@ -13,19 +13,30 @@ do {
         continue;
     }
     
-    M = parseInt(prompt("Ведите второе целое число, больше чем первое"));
+    M = parseInt(prompt("Ведите второе целое число"));
     
     if (!Number.isInteger(M)) {
         alert("Вы допустили ошибку");
         continue;
     }
-    
-    if (M < N) {
-        alert("Второе число должно быть больше первого");
-        continue;
+
+} while (!Number.isInteger(N || M));
+
+
+skipEven = confirm("Пропускать чётные числа?");
+
+
+if (M < N) {
+
+    for (let i = M; i <= N; i++) {
+
+        if (skipEven && i % 2 === 0) {
+            continue;
+        }
+        sum += i;
     };
 
-    skipEven = confirm("Пропускать чётные числа?");
+} else if (M > N) {
 
     for (let i = N; i <= M; i++) {
 
@@ -34,12 +45,11 @@ do {
         }
         sum += i;
     };
+    
+} else if (M == N) {
+    sum = N && M;  
+};
 
-    if (M === N) {
-      sum = 0;  
-    };
-
-} while (!Number.isInteger(N && M) || N > M);
 
 if (skipEven) {
     outputSkipEven = "Чётные числа пропущены";
@@ -47,6 +57,7 @@ if (skipEven) {
 } else {
     outputSkipEven = "Четные числа не пропущены";
 }
+
 
 document.writeln(
     `
