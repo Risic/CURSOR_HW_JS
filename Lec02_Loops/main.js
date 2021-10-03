@@ -1,8 +1,7 @@
 let N;
 let M;
-let sum = 0
+let sum = 0;
 let outputSkipEven;
-let skipEven;
 
 do {
 
@@ -10,20 +9,22 @@ do {
 
     if (!Number.isInteger(N)) {
         alert("Вы ввели не число для первого значения");
-        continue;
     }
-    
+
+} while (!Number.isInteger(N) || N % 1 !== 0);
+
+do {
+
     M = parseInt(prompt("Ведите второе целое число"));
     
     if (!Number.isInteger(M)) {
         alert("Вы допустили ошибку");
-        continue;
     }
 
-} while (!Number.isInteger(N || M));
+} while (!Number.isInteger(M) || M % 1 !== 0);
 
 
-skipEven = confirm("Пропускать чётные числа?");
+const skipEven = confirm("Пропускать чётные числа?");
 
 
 if (M < N) {
@@ -31,9 +32,10 @@ if (M < N) {
     for (let i = M; i <= N; i++) {
 
         if (skipEven && i % 2 === 0) {
-            continue;
+            sum = sum;
+        } else {
+            sum += i;
         }
-        sum += i;
     };
 
 } else if (M > N) {
@@ -41,13 +43,14 @@ if (M < N) {
     for (let i = N; i <= M; i++) {
 
         if (skipEven && i % 2 === 0) {
-            continue;
+            sum = sum;
+        } else {
+            sum += i;
         }
-        sum += i;
     };
     
 } else if (M == N) {
-    sum = N && M;  
+    sum = N;  
 };
 
 
