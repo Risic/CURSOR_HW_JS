@@ -95,6 +95,17 @@ const isPalyndrom = (word) => {
     return (lowerWord === reverseWord) ? true : false;
 };
 
+// Function 11 \\
+
+const deleteDuplicateLetter2 = (string) => {
+    let lowerString = string.toLowerCase().split('');
+    let result = lowerString.filter(letters => {
+    return lowerString.lastIndexOf(letters) === lowerString.indexOf(letters);
+    });
+    return result.join("");
+  };
+  
+
 document.writeln(
     `
     Выводит максимальное число: ${getMaxDigit(23874954)}
