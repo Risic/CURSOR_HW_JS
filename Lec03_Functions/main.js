@@ -25,11 +25,11 @@ const upFirstLetter = (name) => {
 
 // Function 4 \\
 
-const sumAfterTax = (salary) => { return salary - salary * 0.195; };
+const sumAfterTax = (salary) => { return Math.round(salary - salary * 0.195); };
 
 // Function 5 \\
 
-const getRundomNumber = (min, max) => {
+const getRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min); 
 };
 
@@ -45,7 +45,7 @@ const countLetter = (letter, word) => {
         }
     }
     return result;
-}
+};
 
 // Function 7 \\
 
@@ -62,10 +62,10 @@ const convertCurrency = (money) => {
 
     } else {
         result = "Я создан только для конвертации UAH и $";
-    }
+    };
 
     return result;
-}
+};
 
 // Function 8 \\
 
@@ -76,5 +76,45 @@ const getRandomPassword = (number = 8) => {
         password += Math.trunc(Math.random() * 10);
     }
     return password;
-}
+};
 
+// Function 9 \\ 
+
+const deleteLetters = (letter, word) => {
+    let lowerLetter = letter.toLowerCase();
+    let lowerWord = word.toLowerCase();
+    let result = lowerWord.split(lowerLetter).join("");
+    return result
+};
+
+// Function 10 \\
+
+const isPalyndrom = (word) => {
+    let lowerWord = word.toLowerCase().split(" ").join("");
+    let reverseWord = lowerWord.split("").reverse().join("");
+    return (lowerWord === reverseWord) ? true : false;
+};
+
+document.writeln(
+    `
+    Выводит максимальное число: ${getMaxDigit(23874954)}
+    <br>
+    Определяет число в степени: ${getNumberPow(5, 5)}
+    <br>
+    Делает первую букву заглавной: ${upFirstLetter("санчез")}
+    <br>
+    Зарплата после налога: ${sumAfterTax(125000)}
+    <br>
+    Возвращает целое число в заданных пределах: ${getRandomNumber(10, 126)}
+    <br>
+    Считает сколько раз повторяется заданная буква: ${(countLetter("о", "синхрофазотрон"))}
+    <br>
+    Конвертирует доллары в гривны и наоборот: ${(convertCurrency("125uah"))}
+    <br>
+    Генерирует случайный пароль заданной длины или из восьми чисел: ${(getRandomPassword(21))}
+    <br>
+    Удаляет повторения заданной буквы из предложения: ${(deleteLetters("р", "портрет"))}
+    <br>
+    Проверяет, являеться ли строка палиндромом: ${(isPalyndrom("Я несу гусеня"))}
+    `
+);
