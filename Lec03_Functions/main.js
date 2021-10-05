@@ -97,14 +97,14 @@ const isPalyndrom = (word) => {
 
 // Function 11 \\
 
-const deleteDuplicateLetter2 = (string) => {
-    let lowerString = string.toLowerCase().split('');
+const deleteDuplicateLetter = (string) => {
+    let lowerString = string.toLowerCase().split("");
     let result = lowerString.filter(letters => {
     return lowerString.lastIndexOf(letters) === lowerString.indexOf(letters);
     });
     return result.join("");
   };
-  
+
 
 document.writeln(
     `
@@ -118,14 +118,16 @@ document.writeln(
     <br>
     Возвращает целое число в заданных пределах: ${getRandomNumber(10, 126)}
     <br>
-    Считает сколько раз повторяется заданная буква: ${(countLetter("о", "синхрофазотрон"))}
+    Считает сколько раз повторяется заданная буква: ${countLetter("о", "синхрофазотрон")}
     <br>
-    Конвертирует доллары в гривны и наоборот: ${(convertCurrency("125uah"))}
+    Конвертирует доллары в гривны и наоборот: ${convertCurrency("125uah")}
     <br>
-    Генерирует случайный пароль заданной длины или из восьми чисел: ${(getRandomPassword(21))}
+    Генерирует случайный пароль заданной длины или из восьми чисел: ${getRandomPassword(21)}
     <br>
-    Удаляет повторения заданной буквы из предложения: ${(deleteLetters("р", "портрет"))}
+    Удаляет повторения заданной буквы из предложения: ${deleteLetters("р", "портрет")}
     <br>
-    Проверяет, являеться ли строка палиндромом: ${(isPalyndrom("Я несу гусеня"))}
+    Проверяет, являеться ли строка палиндромом: ${isPalyndrom("Я несу гусеня")}
+    <br>
+    Удаляет все повторяющиеся буквы: ${deleteDuplicateLetter("Иван Васильевич меняет профессию")}
     `
 );
