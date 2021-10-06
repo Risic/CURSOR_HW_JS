@@ -107,14 +107,3 @@ const arrOutput = (arrOutputTitle, arrOutputVar) => {
 
 document.writeln(arrOutput(arrOutputTitle, arrOutputVar).join(".<br> <br>"))
 
-// document.writeln(
-//     `
-//     Students: 
-//     Themes:
-//     Marks:
-//     Task 1:
-//     Task 2:
-//     Task 3:
-//     Task 4:
-//     `
-// )
