@@ -67,4 +67,54 @@ const returnPairsMark = (pairsThemes) => {
         pairsMark.push([pairsThemes[i], randomPairsMark()])
     }
     return pairsMark
-}
+};
+
+// | Output | \\
+
+const arrOutputVar = [
+    students.join(" <br>"),
+    themes.join(" <br>"),
+    marks,
+    (createPairs(students)).join(" <br>"),
+    getPairsThemes(pairs, themes).join(" <br>"),
+    getStudentsMarks(students, marks).join(" <br>"),
+    returnPairsMark(pairsThemes).join(" <br>")
+];
+
+const arrOutputTitle = [
+    "Students: ",
+    "Themes: ",
+    "Marks: ",
+    "Task 1: ",
+    "Task 2: ",
+    "Task 3: ",
+    "Task 4: "
+];
+
+const arrOutput = (arrOutputTitle, arrOutputVar) => {
+    const output = []
+
+    for (let i = 0; i < arrOutputTitle.length; i++) {
+        output.push([arrOutputTitle[i].fontcolor("#142536") + arrOutputVar[i]])
+    }
+
+    return output
+};
+
+// const output = arrOutput(arrOutputTitle, arrOutputVar);
+
+// document.getElementById("output").innerHTML = arrOutput.join("<br>");
+
+document.writeln(arrOutput(arrOutputTitle, arrOutputVar).join(".<br> <br>"))
+
+// document.writeln(
+//     `
+//     Students: 
+//     Themes:
+//     Marks:
+//     Task 1:
+//     Task 2:
+//     Task 3:
+//     Task 4:
+//     `
+// )
