@@ -10,8 +10,15 @@ const getNumberPow = (number, pow) => {
 
     let answer = 1;
 
-    for (let i = 0; i < pow; i++) {
-        answer *= number;
+    if (pow >= 0) {
+        for (let i = 0; i < pow; i++) {
+            answer *= number;
+        }
+    } else {
+        for (let i = 0; i < -1 * pow; i++) {
+            answer *= number;
+        };
+        answer = 1 / answer;
     }
 
     return answer;
@@ -19,25 +26,21 @@ const getNumberPow = (number, pow) => {
 
 // Function 3 \\
 
-const upFirstLetter = (name) => {
-    return name[0].toUpperCase() + name.substring(1)
-};
+const upFirstLetter = (name) => name[0].toUpperCase() + name.substring(1);
 
 // Function 4 \\
 
-const sumAfterTax = (salary) => { return Math.round(salary - salary * 0.195); };
+const sumAfterTax = (salary) => Math.round(salary - salary * 0.195);
 
 // Function 5 \\
 
-const getRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min); 
-};
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 // Function 6 \\
 
 const countLetter = (letter, word) => {
-    let lowerLetter = letter.toLowerCase();
-    let lowerWord = word.toLowerCase();
+    const lowerLetter = letter.toLowerCase();
+    const lowerWord = word.toLowerCase();
     let result = 0;
     for (let i = 0; i <= lowerWord.length; i++) {
         if (lowerWord[i] == lowerLetter) {
@@ -50,7 +53,7 @@ const countLetter = (letter, word) => {
 // Function 7 \\
 
 const convertCurrency = (money) => {
-    let lowerMoney = money.toLowerCase();
+    const lowerMoney = money.toLowerCase();
     const currencies = 28;
     let result = 0;
 
@@ -81,27 +84,24 @@ const getRandomPassword = (number = 8) => {
 // Function 9 \\ 
 
 const deleteLetters = (letter, word) => {
-    let lowerLetter = letter.toLowerCase();
-    let lowerWord = word.toLowerCase();
-    let result = lowerWord.split(lowerLetter).join("");
-    return result
+    const lowerLetter = letter.toLowerCase();
+    const lowerWord = word.toLowerCase();
+    return lowerWord.split(lowerLetter).join("");
 };
 
 // Function 10 \\
 
 const isPalyndrom = (word) => {
-    let lowerWord = word.toLowerCase().split(" ").join("");
-    let reverseWord = lowerWord.split("").reverse().join("");
-    return (lowerWord === reverseWord) ? true : false;
+    const lowerWord = word.toLowerCase().split(" ").join("");
+    const reverseWord = lowerWord.split("").reverse().join("");
+    return (lowerWord === reverseWord);
 };
 
 // Function 11 \\
 
 const deleteDuplicateLetter = (string) => {
-    let lowerString = string.toLowerCase().split("");
-    let result = lowerString.filter(letters => {
-    return lowerString.lastIndexOf(letters) === lowerString.indexOf(letters);
-    });
+    const lowerString = string.toLowerCase().split("");
+    let result = lowerString.filter(letters => lowerString.lastIndexOf(letters) === lowerString.indexOf(letters));
     return result.join("");
   };
 
