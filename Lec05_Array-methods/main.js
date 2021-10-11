@@ -70,3 +70,25 @@ const divideByThree = (word) => {
 };
 
 // | Task 10 | \\
+
+
+document.writeln(
+    `
+    <br>
+    Task 1: ${getRandomArray(12, 100, 1000)}
+    <br>
+    Task 3: ${getAverage(3, 4, 6, 1,45, 0, 45, 287, 90, 34, 678, 921)}
+    <br>
+    Task 4: ${getMedian(23, 76, 90, 345, 2, 0, 45, 78)}
+    <br>
+    Task 5: ${filterEvenNumbers(34, 76, 9, 45, 67, 3, 6, 78)}
+    <br>
+    Task 6: ${countPositiveNumbers(-23, 65, 9, 0, 45, -67, -94, 5, -3)}
+    <br>
+    Task 7: ${getDividedByFive(45, 8, 20, 65, 9, 67, 4, 5, 24)}
+    <br>
+    Task 8: ${replaceBadWords("Are you fucking kidding? Holy shit!")}
+    <br>
+    Task 9: ${divideByThree("Commander")} <br> ${divideByThree("Cat")}
+    `
+)
