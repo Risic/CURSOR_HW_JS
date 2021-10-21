@@ -21,7 +21,7 @@ const students = [{
       statistics: [4, 5, 5, 5, 5, 3, 4, 3, 4, 5],
       english: [5, 3],
       cosmology: [5, 5, 5, 5]
-    }
+    },
 }];
 
 
@@ -79,7 +79,7 @@ const calculateWordLetters = (word) => {
     const objectLetter = {};
     
     word.split(" ").join("").split("")
-    .forEach(letter => objectLetter[letter] ? objectLetter[letter]++ : objectLetter[letter] = 1);
+    .forEach(letter => !objectLetter[letter] ? objectLetter[letter] = 1 : objectLetter[letter]++);
 
     return objectLetter
 };
