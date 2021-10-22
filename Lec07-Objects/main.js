@@ -39,6 +39,8 @@ const getSubjects = (student) => {
     return studSubjects
 };
 
+console.log(getSubjects(students[1]));
+
 // || Task 2 || \\
 
 const getAverageMark = (student) => {
@@ -52,6 +54,8 @@ const getAverageMark = (student) => {
     return Math.round(averageMark * 100) / 100;
 };
 
+console.log(getAverageMark(students[1]));
+
 // || Task 3 || \\
 
 const getStudentInfo = (student) => {
@@ -59,12 +63,16 @@ const getStudentInfo = (student) => {
         course: student.course,
         name: student.name,
         averageMark: getAverageMark(student)
-    };
+    }
 };
+
+console.log(getStudentInfo(students[1]));
 
 // || Task 4 || \\
 
 const getStudentsNames = (students) => students.map(student => student.name).sort();
+console.log(getStudentsNames(students));
+
 
 // || Task 5 || \\
 
@@ -72,6 +80,8 @@ const getBestStudent = (students) => {
     const bestStudent = students.reduce((a, b) => getAverageMark(a) < getAverageMark(b) ? b : a);
     return bestStudent.name
 };
+
+console.log(getBestStudent(students));
 
 // || Task 6 || \\
 
@@ -83,3 +93,23 @@ const calculateWordLetters = (word) => {
 
     return objectLetter
 };
+
+console.log(calculateWordLetters("students"));
+
+
+
+document.writeln(`
+  Subjects: <br> ${students[1].name + ": " + getSubjects(students[1])} <br><br>
+  Average mark: ${students[1].name + ": " + getAverageMark(students[1])} <br><br>
+  Name: ${getStudentsNames(students)} <br><br>
+  Best: ${getBestStudent(students)} <br><br>
+`)
+
+document.writeln (`Info: <br>`);
+for (const key in studentInfo) { 
+  document.writeln(key, ": ", studentInfo[key], "<br>")
+};
+
+// for (const key in objectLetter) { 
+//   document.writeln(key, ": ", objectLetter[key], "<br>")
+// }
