@@ -50,9 +50,9 @@ class Student {
 
 }
 
-const Ruslan = new Student("KhPI", 4, "Stohnii Ruslan")
+const Ivan = new Student("Київська академія культури", 3, "Іванов Іван")
 // console.log(Ruslan.getMarks)
 // Ruslan.setMarks = 5
 // console.log(Ruslan.getMarks)
-console.log(Ruslan.getInfo())
+console.log(Ivan.getInfo())
 // console.log(Ruslan.getAverageMark())
