@@ -32,7 +32,7 @@ const getMySalary = function() {
         taxes: this.tax,
         profit: Math.trunc(randomSalary - (randomSalary * this.tax))
     }
-}
+};
 
 const fourthTaskOutput = () => {
     console.log("For Ukraine:")
@@ -41,11 +41,10 @@ const fourthTaskOutput = () => {
     console.log(getMySalary.call(litva))
     console.log("For Latvia:")
     console.log(getMySalary.call(latvia))
-}
+};
 
-console.log(fourthTaskOutput())
-
-setInterval(fourthTaskOutput, 10000)
+console.log(fourthTaskOutput());
+setInterval(fourthTaskOutput, 10000);
 
 document.writeln(`
     Task 1 <br>
