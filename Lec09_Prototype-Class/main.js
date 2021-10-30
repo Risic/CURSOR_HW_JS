@@ -47,12 +47,21 @@ class Student {
         this.isDismiss = false;
         return "ВОССТАНОВЛЕН"
     }
-
 }
 
-const Ivan = new Student("Київська академія культури", 3, "Іванов Іван")
-// console.log(Ruslan.getMarks)
-// Ruslan.setMarks = 5
-// console.log(Ruslan.getMarks)
-console.log(Ivan.getInfo())
-// console.log(Ruslan.getAverageMark())
+const Ivan = new Student("Київська академія культури", 3, "Іванов Іван");
+
+class BudgetStudent extends Student {
+    constructor(university, course, fullName) {
+        super(university, course, fullName)
+        setInterval(() => this.getScholarship(), 30 * 1000);
+    }
+
+    getScholarship () {
+        if (!this.isDismiss && (this.getAverageMark() >= 4)) {
+            console.log(this.fullName + " начислено 1400 грн стипендии")
+        }
+    }
+}
+
+const andrew = new BudgetStudent("Київський політехнічний інститут", 2, "Андрій Петров")
