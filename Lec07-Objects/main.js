@@ -109,7 +109,3 @@ document.writeln (`Info: <br>`);
 for (const key in studentInfo) { 
   document.writeln(key, ": ", studentInfo[key], "<br>")
 };
-
-// for (const key in objectLetter) { 
-//   document.writeln(key, ": ", objectLetter[key], "<br>")
-// }
