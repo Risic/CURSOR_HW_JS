@@ -12,7 +12,7 @@ class Student {
     }
 
     get getMarks () {
-        return !this.isDismiss ? this.marks : (console.log("ОТЧИСЛЕН"), null)
+        return !this.isDismiss ? this.marks : ( null);
     }
 
     set setMarks (mark) {
@@ -51,6 +51,20 @@ class Student {
 
 const Ivan = new Student("Київська академія культури", 3, "Іванов Іван");
 
+document.writeln(`
+        Student ${Ivan.fullName} <br> <br>
+    Info: ${Ivan.getInfo()} <br>
+    Marks: ${Ivan.getMarks} <br>
+    Set mark: ${Ivan.setMarks = 5} <br>
+    Average mark: ${Ivan.getAverageMark()} <br>
+    Dismiss: ${Ivan.dismiss()} <br>
+    Marks: ${Ivan.getMarks} <br>
+    Info: ${Ivan.getInfo()} <br>
+    Recover: ${Ivan.recover()} <br>
+    Info: ${Ivan.getInfo()} <br>
+    Marks: ${Ivan.getMarks} <br> <br>
+`)
+
 class BudgetStudent extends Student {
     constructor(university, course, fullName) {
         super(university, course, fullName)
@@ -64,4 +78,19 @@ class BudgetStudent extends Student {
     }
 }
 
-const andrew = new BudgetStudent("Київський політехнічний інститут", 2, "Андрій Петров")
+const Andrew = new BudgetStudent("Київський політехнічний інститут", 2, "Андрій Петров");
+
+document.writeln(`
+        Budget student ${Andrew.fullName} <br> <br>
+    Info: ${Andrew.getInfo()} <br>
+    Set mark: ${Andrew.setMarks = 5} <br>
+    Marks: ${Andrew.getMarks} <br>
+    Average mark: ${Andrew.getAverageMark()} <br>
+    Dismiss: ${Andrew.dismiss()} <br>
+    Marks: ${Andrew.getMarks} <br>
+    Info: ${Andrew.getInfo()} <br>
+    Recover: ${Andrew.recover()} <br>
+    Info: ${Andrew.getInfo()} <br>
+    Marks: ${Andrew.getMarks} <br>
+    Scholarship in console
+`)

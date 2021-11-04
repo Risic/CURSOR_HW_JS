@@ -6,8 +6,8 @@
 
 body {
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(51,102,153,1) 0%, rgba(68,116,163,1) 90% );
-    height: 100vh;
-    padding-bottom: 5%;
+    height: 100%;
+    padding: 5%;
     color: whitesmoke;
     display: flex;
     justify-content: center;
