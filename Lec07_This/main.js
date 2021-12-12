@@ -26,11 +26,12 @@ const getMySalary = function() {
     const minSalary = 1500;
     const maxSalary = 2000
     const randomSalary = Math.floor(Math.random() * (maxSalary - minSalary + 1) + minSalary);
+    const taxM = Math.trunc(randomSalary * this.tax);
 
     return {
         salary: randomSalary,
-        taxes: this.tax,
-        profit: Math.trunc(randomSalary - (randomSalary * this.tax))
+        taxes: taxM,
+        profit: randomSalary - taxM
     }
 };
 
