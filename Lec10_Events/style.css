@@ -1,0 +1,27 @@
+.keys {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10%;
+}
+
+.key {
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 20px;
+    border: solid 4px rgb(87, 38, 38);
+    border-radius: 10px;
+    background: #2a5988;
+    user-select: none;
+    box-shadow: inset -10px -10px 1px #b109091c;
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+.playing {
+    transform: scale(0.99);
+    border-color: rgba(69, 156, 81, 0.658);
+    box-shadow: inset -3px -3px #b109091c;
+}
