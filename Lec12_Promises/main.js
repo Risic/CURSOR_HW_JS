@@ -8,12 +8,11 @@ function getRandomChinese(length) {
                 let sign = (Date.now()).toString().slice(-5)
                 str += String.fromCharCode(sign)
                 if(str.length === length) {
-                  resolve(str)  
+                    resolve(str)  
                 }
             }, 50 * i)
             i++
         };
-        
     });
 };
 
