@@ -29,6 +29,7 @@ const getCharacterInfo = (film) => {
     axios.get(`${baseURL}films/${film}/`)
     .then((res) => {
         const chars = res.data.characters
+        // console.log(res.data.title)
         chars.forEach(char => {
             axios.get(`${char}`)
             .then((res) => {
@@ -59,17 +60,42 @@ const getCharacterInfo = (film) => {
                         </div>
                     </div>`
                 filmOutput.innerHTML += charItem
-                console.log(character.name, character.photo)
+                // console.log(character.name, character.photo)
             })
         });
         filmOutput.innerHTML = ""
     })
     .catch((err) => {
         console.log("Err", err)
-        filmOutput.innerHTML = "Error ocured :(" + err
+        filmOutput.innerHTML = "Error ocured :("
     })
 };
+
+const getFilmsForSelect = () => {
+    axios.get(`${baseURL}films/`)
+    .then((res) => {
+        const films = res.data.results
+        films.forEach((film, index) => {
+            selectedFilm[index] = new Option(film.title, index+1)
+            console.log(film.title)
+        })
+    })
+    .then((res) => {
+        selectedFilm.options[1].selected = true
+    })
+}
+getFilmsForSelect()
+
+chooseBtnFilm.addEventListener("click", () => {
+    const filmNum = selectedFilm.value
+    getCharacterInfo(filmNum)
+})
 
 getInfoBtn.addEventListener("click", () => {
     getCharacterInfo(2)
 })
+
+// const getMovieChar = () => {
+//     const filmNum = selectedFilm.value
+//     getCharacterInfo(filmNum)
+// }
