@@ -73,5 +73,3 @@ const getCharacterInfo = (film) => {
 getInfoBtn.addEventListener("click", () => {
     getCharacterInfo(2)
 })
-
-
