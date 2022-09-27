@@ -24,10 +24,6 @@ const charPortrait = {
     "Boba Fett": "https://upload.wikimedia.org/wikipedia/commons/3/37/Boba_Fett_-_A_Fett_to_Remember_%28cropped%29.jpg"
 }
 
-// chooseBtnFilm.addEventListener("click", () => {
-//     console.log(selectedFilm.value)
-// })
-
 const getCharacterInfo = (film) => {
     filmOutput.innerHTML = "Loading...";
     axios.get(`${baseURL}films/${film}/`)
