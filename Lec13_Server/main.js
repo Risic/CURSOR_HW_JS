@@ -84,7 +84,6 @@ const getFilmsForSelect = () => {
         selectedFilm.options[1].selected = true
     })
 }
-getFilmsForSelect()
 
 chooseBtnFilm.addEventListener("click", () => {
     const filmNum = selectedFilm.value
@@ -93,6 +92,7 @@ chooseBtnFilm.addEventListener("click", () => {
 
 getInfoBtn.addEventListener("click", () => {
     getCharacterInfo(2)
+    getFilmsForSelect()
 })
 
 // const getMovieChar = () => {
