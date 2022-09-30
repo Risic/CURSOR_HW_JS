@@ -14,9 +14,9 @@
     <title>SWAPI</title>
 </head>
 <body>
+    <div id="filter"></div>
     <div class="container">
         <div class="control">
-
             <div class="button-wrapper">
                 <button id="getInfoBtn" type="button" class="btn btn-primary btn-lg">
                     <span>Get info 2 film</span>
@@ -30,7 +30,7 @@
             
                 <div class="toggle-wrapper">
                     <div class="toggle-button r" id="toggle-btn">
-                        <input type="checkbox" class="toggle-checkbox"/>
+                        <input id="wookieeToggle" type="checkbox" class="toggle-checkbox"/>
                         <div class="toggle-knobs"></div>
                     </div>
                 </div>
@@ -54,9 +54,13 @@
 
             <div class="planetSection">
                 <button id="getPlanet" type="button" class="btn btn-info">Get planet</button>
+                <div class="pagesInfo">
+                    <div id="currentPage">Current page: 0</div>
+                    <div id="limit">Limit: </div>
+                </div>
                 <div class="planetWrapper">
                     <button id="prevPageBtn" type="button" class="btn btn-secondary btn-sm">PREV</button>
-                    <div class="planetList"></div>
+                    <div id="planetList"></div>
                     <button id="nextPageBtn" type="button" class="btn btn-secondary btn-sm">NEXT</button>
                 </div>
             </div>

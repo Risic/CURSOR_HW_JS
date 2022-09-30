@@ -5,6 +5,20 @@ const chooseBtnFilm = document.getElementById("chooseBtnFilm");
 const selectedFilm = document.getElementById("selectFilm");
 const filmOutput = document.getElementById("filmOutput");
 
+const wookieeToggle = document.getElementById("wookieeToggle");
+wookieeToggle.checked = false;
+
+const getPlanetBtn = document.getElementById("getPlanet");
+const prevPageBtn = document.getElementById("prevPageBtn");
+const nextPageBtn = document.getElementById("nextPageBtn");
+const planetList = document.getElementById("planetList");
+const currentPages = document.getElementById("currentPage");
+const limitPages = document.getElementById("limit");
+let currentPage = 1;
+const limit = 6;
+
+limitPages.innerHTML += limit
+
 const charPortrait = {
     "IG-88": "https://static.wikia.nocookie.net/rustarwars/images/a/aa/IG-88B-ESB.jpg",
     "C-3PO": "https://static.wikia.nocookie.net/rustarwars/images/6/62/3PONaked-ST.jpg",
@@ -22,16 +36,32 @@ const charPortrait = {
     "Wedge Antilles": "https://upload.wikimedia.org/wikipedia/en/4/41/Wedge_Antilles-Denis_Lawson-Star_Wars_%281977%29.jpg",
     "Bossk": "https://static.wikia.nocookie.net/rustarwars/images/d/d2/Bossk.jpg",
     "Boba Fett": "https://upload.wikimedia.org/wikipedia/commons/3/37/Boba_Fett_-_A_Fett_to_Remember_%28cropped%29.jpg"
-}
+};
+
+const charGenderIcon = (gender) => {
+    switch (gender) {
+        case "male":
+            return `<i class="fa-solid fa-mars"></i>`;
+        case "female":
+            return `<i class="fa-solid fa-venus"></i>`;
+        case "n/a":
+            return `<i class="fa-solid fa-robot"></i>`;
+        case "none":
+            return `<i class="fa-solid fa-genderless"></i>`;
+        default:
+            return `<i class="fa-solid fa-question"></i>`;
+    }
+};
 
 const getCharacterInfo = (film) => {
     filmOutput.innerHTML = "Loading...";
-    axios.get(`${baseURL}films/${film}/`)
+    axios
+    .get(`${baseURL}films/${film}/`)
     .then((res) => {
         const chars = res.data.characters
-        // console.log(res.data.title)
         chars.forEach(char => {
-            axios.get(`${char}`)
+            axios
+            .get(`${char}`)
             .then((res) => {
 
                 const character = {
@@ -40,11 +70,12 @@ const getCharacterInfo = (film) => {
                     gender: res.data.gender,
                 }
 
+                // character photo
                 for (let i = 0; i < Object.keys(charPortrait).length; i++) {
                     if (Object.keys(charPortrait)[i] == character.name) {
                         character.photo = Object.values(charPortrait)[i]
                     }
-                }
+                } 
 
                 if (character.photo == undefined) {
                     character.photo ="./images/Missing_avatar.jpg"
@@ -55,12 +86,11 @@ const getCharacterInfo = (film) => {
                         <div><img class="imgChar" src="${character.photo}" alt="Portrait"></div>
                         <div class="charInfo">
                             <div class="charName">${character.name}</div>
-                            <div class="charBirth">Gender: ${character.gender}</div>
-                            <div class="charGender">Date of birth: ${character.birth}</div>
+                            <div class="charGender">Gender: ${charGenderIcon(character.gender)}</div>
+                            <div class="charBirth">Date of birth: ${character.birth} </div>
                         </div>
                     </div>`
                 filmOutput.innerHTML += charItem
-                // console.log(character.name, character.photo)
             })
         });
         filmOutput.innerHTML = ""
@@ -77,25 +107,79 @@ const getFilmsForSelect = () => {
         const films = res.data.results
         films.forEach((film, index) => {
             selectedFilm[index] = new Option(film.title, index+1)
-            console.log(film.title)
         })
     })
+    // .then((res) => {
+    //     selectedFilm.options[1].selected = true
+    // })
+};
+
+getFilmsForSelect()
+let wook = ""
+const getPlanet = () => {
+    planetList.innerHTML = "Loading..."
+    if (wookieeToggle.checked) {
+        wook = "?format=wookiee;"
+    } else {
+        wook = ""
+    }
+    axios
+    .get(`${baseURL}planets/${wook}?page=${currentPage}`)
     .then((res) => {
-        selectedFilm.options[1].selected = true
+        console.log(res.data)
+        const planets = res.data.results;
+        planets.forEach(planet => {
+            const planetI = {
+                name: planet.name,
+                climate: planet.climate,
+                terrain: planet.terrain,
+                gravity: planet.gravity,
+                population: planet.population
+            }
+
+            const planetItem = 
+            `<div class="planetItem">
+                <div class="planetPic">
+                    <img src="./images/planet.svg" alt="Planet image">
+                </div>
+                <div class="planetInfo" style="">
+                    <div class="planetName">${(planetI.name).toUpperCase()}</div>
+                    <div class="planetClimate">CLIMATE: ${planetI.climate}</div>
+                    <div class="planetTerrain">TERRAIN: ${planetI.terrain}</div>
+                    <div class="planetGravity">GRAVITY: ${planetI.gravity}</div>
+                    <div class="planetPopulation">POPULATION: ${planetI.population}</div>
+                </div>
+            </div>`
+
+            planetList.innerHTML += planetItem
+        })
     })
-}
+    planetList.innerHTML = ""
+    currentPages.innerHTML = ""
+    currentPages.innerHTML += `Current page: ${currentPage}`;
+};
 
 chooseBtnFilm.addEventListener("click", () => {
     const filmNum = selectedFilm.value
     getCharacterInfo(filmNum)
-})
+});
 
 getInfoBtn.addEventListener("click", () => {
     getCharacterInfo(2)
-    getFilmsForSelect()
-})
+});
 
-// const getMovieChar = () => {
-//     const filmNum = selectedFilm.value
-//     getCharacterInfo(filmNum)
-// }
+getPlanetBtn.addEventListener("click", () => {
+    getPlanet()
+});
+
+prevPageBtn.addEventListener("click", () => {
+    if (currentPage <= 1) return
+    currentPage -=1
+    getPlanet()
+});
+
+nextPageBtn.addEventListener("click", () => {
+    if (currentPage >= limit) return
+    currentPage +=1
+    getPlanet()
+});
