@@ -92,6 +92,10 @@ const getCharacterInfo = (film) => {
                     </div>`
                 filmOutput.innerHTML += charItem
             })
+            .catch((err) => {
+                console.log("Err", err)
+                filmOutput.innerHTML = "Error ocured :("
+            })
         });
         filmOutput.innerHTML = ""
     })
@@ -113,51 +117,58 @@ const getFilmsForSelect = () => {
     //     selectedFilm.options[1].selected = true
     // })
 };
-
 getFilmsForSelect()
+
 let wook = ""
 const getPlanet = () => {
     planetList.innerHTML = "Loading..."
-    if (wookieeToggle.checked) {
-        wook = "?format=wookiee;"
-    } else {
-        wook = ""
-    }
     axios
-    .get(`${baseURL}planets/${wook}?page=${currentPage}`)
+    .get(`https://swapi.dev/api/planets/?page=${currentPage}`)
     .then((res) => {
-        console.log(res.data)
         const planets = res.data.results;
         planets.forEach(planet => {
-            const planetI = {
-                name: planet.name,
-                climate: planet.climate,
-                terrain: planet.terrain,
-                gravity: planet.gravity,
-                population: planet.population
-            }
-
-            const planetItem = 
-            `<div class="planetItem">
-                <div class="planetPic">
-                    <img src="./images/planet.svg" alt="Planet image">
-                </div>
-                <div class="planetInfo" style="">
-                    <div class="planetName">${(planetI.name).toUpperCase()}</div>
-                    <div class="planetClimate">CLIMATE: ${planetI.climate}</div>
-                    <div class="planetTerrain">TERRAIN: ${planetI.terrain}</div>
-                    <div class="planetGravity">GRAVITY: ${planetI.gravity}</div>
-                    <div class="planetPopulation">POPULATION: ${planetI.population}</div>
-                </div>
-            </div>`
-
-            planetList.innerHTML += planetItem
-        })
+            wookieeToggle.checked ? wook = `?format=wookiee;` : wook = "";
+            axios
+            .get(`${planet.url}${wook}`)
+            .then((res) => {
+                console.log(res.data)
+                const result = res.data;
+                const planetI = {
+                    name: !wookieeToggle.checked ? result.name : result.whrascwo,
+                    climate: !wookieeToggle.checked ? result.climate : result.oaanahscraaowo,
+                    terrain: !wookieeToggle.checked ? result.terrain : result.aoworcrcraahwh,
+                    gravity: !wookieeToggle.checked ? result.gravity : result.rrrcrahoahaoro,
+                    population: !wookieeToggle.checked ? result.population : result.akooakhuanraaoahoowh
+                }
+    
+                const planetItem = 
+                `<div class="planetItem">
+                    <div class="planetPic">
+                        <img src="./images/planet.svg" alt="Planet image">
+                    </div>
+                    <div class="planetInfo" style="">
+                        <div class="planetName">${(planetI.name).toUpperCase()}</div>
+                        <div class="planetClimate">CLIMATE: ${planetI.climate}</div>
+                        <div class="planetTerrain">TERRAIN: ${planetI.terrain}</div>
+                        <div class="planetGravity">GRAVITY: ${planetI.gravity}</div>
+                        <div class="planetPopulation">POPULATION: ${planetI.population}</div>
+                    </div>
+                </div>`
+    
+                planetList.innerHTML += planetItem
+            })
+            })
     })
+    .catch((err) => {
+        console.log("Err", err)
+        filmOutput.innerHTML = "Error ocured :("
+    });
+
     planetList.innerHTML = ""
     currentPages.innerHTML = ""
     currentPages.innerHTML += `Current page: ${currentPage}`;
 };
+
 
 chooseBtnFilm.addEventListener("click", () => {
     const filmNum = selectedFilm.value
