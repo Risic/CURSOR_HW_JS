@@ -7,6 +7,7 @@ const filmOutput = document.getElementById("filmOutput");
 
 const wookieeToggle = document.getElementById("wookieeToggle");
 wookieeToggle.checked = false;
+let wook = "";
 
 const getPlanetBtn = document.getElementById("getPlanet");
 const prevPageBtn = document.getElementById("prevPageBtn");
@@ -41,12 +42,16 @@ const charPortrait = {
 const charGenderIcon = (gender) => {
     switch (gender) {
         case "male":
+        case "scraanwo":
             return `<i class="fa-solid fa-mars"></i>`;
         case "female":
+        case "wwwoscraanwo":
             return `<i class="fa-solid fa-venus"></i>`;
         case "n/a":
+        case "wh/ra":
             return `<i class="fa-solid fa-robot"></i>`;
         case "none":
+        case "whoowhwo":
             return `<i class="fa-solid fa-genderless"></i>`;
         default:
             return `<i class="fa-solid fa-question"></i>`;
@@ -58,16 +63,18 @@ const getCharacterInfo = (film) => {
     axios
     .get(`${baseURL}films/${film}/`)
     .then((res) => {
-        const chars = res.data.characters
+        const chars = res.data.characters;
+        wookieeToggle.checked ? wook = `?format=wookiee;` : wook = "";
+        
         chars.forEach(char => {
             axios
-            .get(`${char}`)
+            .get(`${char}${wook}`)
             .then((res) => {
-
+                console.log(res.data)
                 const character = {
-                    name: res.data.name,
-                    birth: res.data.birth_year,
-                    gender: res.data.gender,
+                    name: !wookieeToggle.checked ? res.data.name : res.data.whrascwo,
+                    birth: !wookieeToggle.checked ? res.data.birth_year : res.data.rhahrcaoac_roworarc,
+                    gender: !wookieeToggle.checked ? res.data.gender : res.data.rrwowhwaworc
                 }
 
                 // character photo
@@ -77,9 +84,11 @@ const getCharacterInfo = (film) => {
                     }
                 } 
 
-                if (character.photo == undefined) {
+                if (!character.photo) {
                     character.photo ="./images/Missing_avatar.jpg"
                 }
+
+                console.log(character.gender)
 
                 const charItem =
                     `<div class="item">
@@ -119,19 +128,17 @@ const getFilmsForSelect = () => {
 };
 getFilmsForSelect()
 
-let wook = ""
 const getPlanet = () => {
     planetList.innerHTML = "Loading..."
     axios
     .get(`https://swapi.dev/api/planets/?page=${currentPage}`)
     .then((res) => {
         const planets = res.data.results;
+        wookieeToggle.checked ? wook = `?format=wookiee;` : wook = "";
         planets.forEach(planet => {
-            wookieeToggle.checked ? wook = `?format=wookiee;` : wook = "";
             axios
             .get(`${planet.url}${wook}`)
             .then((res) => {
-                console.log(res.data)
                 const result = res.data;
                 const planetI = {
                     name: !wookieeToggle.checked ? result.name : result.whrascwo,
