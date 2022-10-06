@@ -78,11 +78,11 @@ const getCharacterInfo = (film) => {
                 }
 
                 // character photo
-                for (let i = 0; i < Object.keys(charPortrait).length; i++) {
-                    if (Object.keys(charPortrait)[i] == character.name) {
-                        character.photo = Object.values(charPortrait)[i]
+                for (const key in charPortrait) {
+                    if (key == character.name) {
+                        character.photo = charPortrait[key]
                     }
-                } 
+                }
 
                 if (!character.photo) {
                     character.photo ="./images/Missing_avatar.jpg"
